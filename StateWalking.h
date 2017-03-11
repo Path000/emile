@@ -4,8 +4,8 @@
 #include "State.h"
 
 class StateWalking : public State {
-  public:
-    State *run();
+	public:
+		State *run();
 };
 
 #endif

@@ -5,21 +5,21 @@
 #include "Robot.h"
 
 class State {
-  public:
-    void init(Robot *robot, State *stateIdle, State *stateWalking, State *stateCommanded, State *stateWelcome);
-    virtual State *run();
-    void start();
-    void stop();
-    unsigned long duration();
-    boolean isFirstLoop();
-  protected:
-    Robot *_robot;
-    State *_stateIdle;
-    State *_stateWalking;
-    State *_stateCommanded;
-    State *_stateWelcome;
-  private:
-    unsigned long _startedAt;
+	public:
+		void init(Robot *robot, State *stateIdle, State *stateWalking, State *stateCommanded, State *stateWelcome);
+		virtual State *run();
+		void start();
+		void stop();
+		unsigned long duration();
+		boolean isFirstLoop();
+	protected:
+		Robot *_robot;
+		State *_stateIdle;
+		State *_stateWalking;
+		State *_stateCommanded;
+		State *_stateWelcome;
+	private:
+		unsigned long _startedAt;
 };
 
 #endif

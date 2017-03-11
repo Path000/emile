@@ -11,7 +11,7 @@ void StateMachine::init(Robot *robot, RemoteCommand *command) {
 }
 
 void StateMachine::setCurrentState(State *state) {
-  _currentState = state;
+	_currentState = state;
 }
 
 void StateMachine::interrupt() {
@@ -22,13 +22,13 @@ void StateMachine::interrupt() {
 void StateMachine::run() {
 
 	// TODO
-/*
-	if(command.received()) {
-		interrupt();
-		stateCommanded.setCommand(command.getAsString());
-		command.execute();
-	}
-*/
+	/*
+		if(command.received()) {
+			interrupt();
+			stateCommanded.setCommand(command.getAsString());
+			command.execute();
+		}
+	*/
 	State *newState = _currentState->run();
 	setCurrentState(newState);
 }

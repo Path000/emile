@@ -10,17 +10,17 @@
 #include "RemoteCommand.h"
 
 class StateMachine {
-  public:
-  	void init(Robot *robot, RemoteCommand *command);
-    void setCurrentState(State *state);
-    void run();
-    void interrupt();
-  private:
-    State *_currentState;
-    StateIdle stateIdle;
-	StateWalking stateWalking;
-	StateCommanded stateCommanded;
-	StateWelcome stateWelcome;
+	public:
+		void init(Robot *robot, RemoteCommand *command);
+		void setCurrentState(State *state);
+		void run();
+		void interrupt();
+	private:
+		State *_currentState;
+		StateWelcome stateWelcome;
+		StateIdle stateIdle;
+		StateWalking stateWalking;
+		StateCommanded stateCommanded;
 };
 
 #endif

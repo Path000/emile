@@ -8,16 +8,16 @@
 #include <utility/imumaths.h>
 
 typedef struct {
-  int x;
-  int y;
-  int z;
+	int x;
+	int y;
+	int z;
 } Orient;
 
 class BNOSensor {
-  public:
-    BNOSensor();
-    void init();
-    Orient getAll();
+	public:
+		BNOSensor();
+		void init();
+		Orient getAll();
 };
 
 #endif

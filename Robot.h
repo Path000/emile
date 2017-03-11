@@ -24,13 +24,13 @@
 #define NOMBRE_SERVO 13
 
 class Robot {
-  public:
-    void init();
-    Ecran _ecran;
-    BNOSensor _sensor;
-    void directMove(byte servo, int angle);
-  private:
-  	MyServo servos[NOMBRE_SERVO];
+	public:
+		void init();
+		Ecran _ecran;
+		BNOSensor _sensor;
+		void directMove(byte servo, int angle);
+	private:
+		MyServo servos[NOMBRE_SERVO];
 };
 
 #endif

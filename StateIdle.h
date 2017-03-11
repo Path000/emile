@@ -6,9 +6,9 @@
 #include "State.h"
 
 class StateIdle : public State {
-  public:
-    State *run();
-  private:
+	public:
+		State *run();
+	private:
 };
 
 #endif

@@ -15,7 +15,7 @@ void setup() {
 }
 
 void serialEvent1() {
- 	command.readCommand();
+	command.readCommand();
 }
 
 void loop() {

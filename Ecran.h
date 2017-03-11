@@ -13,14 +13,14 @@
 #define OLED_RESET 4
 
 class Ecran {
-  public:
-    void init();
-    void welcome();
-    void orientation(int x, int y, int z);
-    void clear();
-    void eyes();
-    void showCommand(String command);
-  private:
+	public:
+		void init();
+		void welcome();
+		void orientation(int x, int y, int z);
+		void clear();
+		void eyes();
+		void showCommand(String command);
+	private:
 };
 
 #endif

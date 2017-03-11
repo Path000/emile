@@ -1,11 +1,11 @@
 #include "StateCommanded.h"
 
 State *StateCommanded::run() {
-	if(isFirstLoop()) {
+	if (isFirstLoop()) {
 		_robot->_ecran.showCommand(_command);
 	}
 	start();
-	if(_ended) {
+	if (_ended) {
 		_ended = false;
 		_robot->_ecran.clear();
 		stop();

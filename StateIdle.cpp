@@ -1,11 +1,11 @@
 #include "StateIdle.h"
 
 State *StateIdle::run() {
-	if(isFirstLoop()) {
+	if (isFirstLoop()) {
 		_robot->_ecran.eyes();
 	}
 	start();
-	if(duration() > IDLE_DELAY) {
+	if (duration() > IDLE_DELAY) {
 		_robot->_ecran.clear();
 		stop();
 		return _stateWalking;

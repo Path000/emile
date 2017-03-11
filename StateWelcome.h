@@ -6,9 +6,9 @@
 #define WELCOME_DELAY 1000
 
 class StateWelcome : public State {
-  public:
-    State *run();
-  private:
+	public:
+		State *run();
+	private:
 };
 
 

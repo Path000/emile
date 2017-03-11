@@ -10,13 +10,13 @@ void State::init(Robot *robot, State *stateIdle, State *stateWalking, State *sta
 }
 
 void State::start() {
-	if(_startedAt == 0) {
+	if (_startedAt == 0) {
 		_startedAt = millis();
 	}
 }
 
 unsigned long State::duration() {
-	return(millis() - _startedAt);
+	return (millis() - _startedAt);
 }
 
 void State::stop() {
@@ -24,7 +24,7 @@ void State::stop() {
 }
 
 boolean State::isFirstLoop() {
-	if(_startedAt == 0) {
+	if (_startedAt == 0) {
 		return true;
 	}
 	return false;
