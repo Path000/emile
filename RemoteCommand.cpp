@@ -8,8 +8,10 @@ void RemoteCommand::init() {
 
 // Called from serialEvent()
 void RemoteCommand::readCommand() {
+
 	if (Serial.available() && !_stringComplete) {
 		delay(100);
+    Serial.println("available");
 	}
 	while (Serial.available() && !_stringComplete) {
 		char inChar = (char)Serial.read();
