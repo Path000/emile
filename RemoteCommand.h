@@ -10,19 +10,20 @@
 typedef struct {
 	String cmd;
 	String arg;
-} ParsedData;
+} ParsedCommand;
 
 class RemoteCommand {
 	public:
 		void init();
 		void readCommand();
 		boolean received();
+		boolean isStartCommand();
+		boolean isStopCommand();
 		void execute();
-		String getAsString();
 	private:
 		// TODO dispatch in StateCommanded
-		//void _dispatch(ParsedData data);
-		ParsedData _parse();
+		//void _dispatch(ParsedCommand data);
+		ParsedCommand _parse();
 		String _inputString;
 		boolean _stringComplete;
 		byte _selectedServo;

@@ -4,17 +4,16 @@ void RemoteCommand::init() {
 	_selectedServo = 0;
 	_inputString = "";
 	_stringComplete = false;
-	Serial1.begin(9600);
 }
 
 
-// Called from serialEvent1()
+// Called from serialEvent()
 void RemoteCommand::readCommand() {
-	if (Serial1.available() && !_stringComplete) {
+	if (Serial.available() && !_stringComplete) {
 		delay(100);
 	}
-	while (Serial1.available() && !_stringComplete) {
-		char inChar = (char)Serial1.read();
+	while (Serial.available() && !_stringComplete) {
+		char inChar = (char)Serial.read();
 		if (inChar == '\n') {
 			_stringComplete = true;
 		} else {
@@ -23,16 +22,26 @@ void RemoteCommand::readCommand() {
 	}
 }
 
+boolean RemoteCommand::isStartCommand() {
+	// TODO
+	return false;
+}
+
+boolean RemoteCommand::isStopCommand() {
+	// TODO
+	return false;
+}
+
 // Called from loop()
 boolean RemoteCommand::received() {
 	return _stringComplete;
 }
 
-ParsedData RemoteCommand::_parse() {
+ParsedCommand RemoteCommand::_parse() {
 	Serial.print("RawCmd:");
 	Serial.println(_inputString);
 
-	ParsedData data;
+	ParsedCommand data;
 	data.cmd = "";
 	data.arg = "";
 	int dataLength = _inputString.length();
@@ -45,9 +54,9 @@ ParsedData RemoteCommand::_parse() {
 	return data;
 }
 
-// TODO dispatch in StateCommanded
+// TODO dispatch in StateCommanded or in robot
 /*
-void RemoteCommand::_dispatch(ParsedData data) {
+void RemoteCommand::_dispatch(ParsedCommand data) {
   if(data.cmd == COMMAND_ANGLE) {
     _robot->directMove(_selectedServo, data.arg.toInt());
   }
@@ -58,13 +67,14 @@ void RemoteCommand::_dispatch(ParsedData data) {
 */
 
 // Called from loop()
+// free flag _stringComplete
 void RemoteCommand::execute() {
 
 	if (!_stringComplete) {
 		return;
 	}
 
-	ParsedData data = _parse();
+	ParsedCommand data = _parse();
 	//_dispatch(data);
 
 	_inputString = "";
@@ -74,8 +84,4 @@ void RemoteCommand::execute() {
 	Serial.println(data.cmd);
 	Serial.print("Arg:");
 	Serial.println(data.arg);
-}
-
-String RemoteCommand::getAsString() {
-	return _inputString;
 }

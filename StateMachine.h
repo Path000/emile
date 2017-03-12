@@ -14,9 +14,9 @@ class StateMachine {
 		void init(Robot *robot, RemoteCommand *command);
 		void setCurrentState(State *state);
 		void run();
-		void interrupt();
 	private:
 		State *_currentState;
+		RemoteCommand *_command;
 		StateWelcome stateWelcome;
 		StateIdle stateIdle;
 		StateWalking stateWalking;

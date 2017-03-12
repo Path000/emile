@@ -14,8 +14,8 @@ State *StateCommanded::run() {
 	return (State *)this;
 }
 
-void StateCommanded::setCommand(String cmd) {
-	_command = cmd;
+void StateCommanded::setCommand(RemoteCommand *command) {
+	_command = command;
 }
 
 void StateCommanded::endCommand() {

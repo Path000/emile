@@ -2,7 +2,6 @@
 #include "Robot.h"
 #include "StateMachine.h"
 
-
 RemoteCommand command;
 Robot robot;
 StateMachine stateMachine;
@@ -14,7 +13,7 @@ void setup() {
 	stateMachine.init(&robot, &command);
 }
 
-void serialEvent1() {
+void serialEvent() {
 	command.readCommand();
 }
 
