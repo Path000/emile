@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-	if (Serial.available() && !_stringComplete) {
+	if (Serial.available()) {
 		delay(100);
 		Serial.println("available");
 		command.readCommand();
