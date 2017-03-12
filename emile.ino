@@ -13,11 +13,12 @@ void setup() {
 	stateMachine.init(&robot, &command);
 }
 
-void serialEvent() {
-	command.readCommand();
-}
-
 void loop() {
+	if (Serial.available() && !_stringComplete) {
+		delay(100);
+		Serial.println("available");
+		command.readCommand();
+	}
 	stateMachine.run();
 	delay(100);
 }
