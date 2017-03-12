@@ -1,6 +1,7 @@
 #ifndef StateMachine_h
 #define StateMachine_h
 
+#include <Arduino.h>
 #include "State.h"
 #include "StateIdle.h"
 #include "StateWalking.h"

@@ -18,8 +18,8 @@ void StateMachine::run() {
 	if (_command->received()) {
 		Serial.println("received");
 		// start and stop are not used by stateCommanded
-		_currentState->stop();
-		setCurrentState(&stateCommanded);
+		//_currentState->stop();
+		//setCurrentState(&stateCommanded);
 	}
 	State *newState = _currentState->run();
 	setCurrentState(newState);
