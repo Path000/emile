@@ -4,7 +4,7 @@
 
 import serial
 import sys
-print sys.argv[0]
+print sys.argv[1]
 
 #ser = serial.Serial('/dev/ttyACM0', 115200)
 #ser.write(message)
