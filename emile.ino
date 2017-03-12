@@ -14,6 +14,7 @@ void setup() {
 }
 
 void serialEvent() {
+	Serial.print("serialEvent()");
 	command.readCommand();
 }
 
