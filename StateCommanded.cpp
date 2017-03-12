@@ -1,19 +1,15 @@
 #include "StateCommanded.h"
 
 State *StateCommanded::run() {
-	if (isFirstLoop()) {
-	}
 	ParsedCommand data = _command->get();
 	if(data.cmd == "") {
 		return (State *)this;
 	}
 	_robot->_ecran.showCommand(data);
 	if (data.cmd == COMMAND_START) {
-		start();
 	}
 	if (data.cmd == COMMAND_END) {
 		_robot->_ecran.clear();
-		stop();
 		return _stateIdle;
 	}
 	if (data.cmd == COMMAND_ANGLE) {

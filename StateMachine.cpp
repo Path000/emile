@@ -16,10 +16,9 @@ void StateMachine::setCurrentState(State *state) {
 
 void StateMachine::run() {
 	if (_command->received()) {
-		if(_command->isStartCommand()) {
-			_currentState->stop();
-			setCurrentState(&stateCommanded);
-		}
+		// start and stop are not used by stateCommanded
+		_currentState->stop();
+		setCurrentState(&stateCommanded);
 	}
 	State *newState = _currentState->run();
 	setCurrentState(newState);
