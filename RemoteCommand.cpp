@@ -15,6 +15,8 @@ void RemoteCommand::readCommand() {
 		char inChar = (char)Serial.read();
 		if (inChar == '\n') {
 			_stringComplete = true;
+			Serial.print("RawCmd:");
+			Serial.println(_inputString);
 		} else {
 			_inputString += inChar;
 		}
@@ -27,15 +29,13 @@ boolean RemoteCommand::received() {
 }
 
 ParsedCommand RemoteCommand::_parse() {
-	Serial.print("RawCmd:");
-	Serial.println(_inputString);
 
 	ParsedCommand data;
 	data.cmd = "";
 	data.arg = "";
-  if (!_stringComplete) {
-    return data;
-  }
+	if (!_stringComplete) {
+		return data;
+	}
 	int dataLength = _inputString.length();
 	int sepPos = _inputString.indexOf(COMMAND_SEPARATOR);
 	if (sepPos == -1) return data;
@@ -54,5 +54,5 @@ ParsedCommand RemoteCommand::get() {
 	_inputString = "";
 	_stringComplete = false;
 
-  return data;
+	return data;
 }
