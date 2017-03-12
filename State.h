@@ -14,10 +14,10 @@ class State {
 		boolean isFirstLoop();
 	protected:
 		Robot *_robot;
+    State *_stateWelcome;
 		State *_stateIdle;
 		State *_stateWalking;
 		State *_stateCommanded;
-		State *_stateWelcome;
 	private:
 		unsigned long _startedAt;
 };

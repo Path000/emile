@@ -15,7 +15,6 @@ class StateCommanded : public State {
 		void setCommand(RemoteCommand *command);
 	private:
 		RemoteCommand *_command;
-		void _dispatch(ParsedCommand data);
 		byte _selectedServo;
 };
 

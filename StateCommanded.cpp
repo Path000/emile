@@ -1,6 +1,7 @@
 #include "StateCommanded.h"
 
 State *StateCommanded::run() {
+	Serial.println("StateCommanded::run()");
 	ParsedCommand data = _command->get();
 	if(data.cmd == "") {
 		return (State *)this;

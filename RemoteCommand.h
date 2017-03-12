@@ -17,8 +17,6 @@ class RemoteCommand {
 		boolean received();
 		ParsedCommand get();
 	private:
-		// TODO dispatch in StateCommanded
-		//void _dispatch(ParsedCommand data);
 		ParsedCommand _parse();
 		String _inputString;
 		boolean _stringComplete;
