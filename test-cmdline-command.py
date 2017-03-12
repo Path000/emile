@@ -8,6 +8,7 @@ print sys.argv[1]
 
 ser = serial.Serial('/dev/ttyACM0', 115200)
 ser.write(sys.argv[1])
+ser.write("\n")
 
 while 1 :
     print(ser.readline())
