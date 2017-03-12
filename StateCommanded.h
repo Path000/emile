@@ -12,7 +12,7 @@
 class StateCommanded : public State {
 	public:
 		State *run();
-		void setCommand(ParsedCommand *command);
+		void setCommand(RemoteCommand *command);
 	private:
 		RemoteCommand *_command;
 		void _dispatch(ParsedCommand data);
