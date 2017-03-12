@@ -55,8 +55,8 @@ void Ecran::showCommand(ParsedCommand command) {
 	display.setCursor(0, 0);
 	display.setTextSize(1);
 	display.print("Cmd:");
-	display.println(data.cmd);
+	display.println(command.cmd);
 	display.print("Arg:");
-	display.println(data.arg);
+	display.println(command.arg);
 	display.display();
 }
