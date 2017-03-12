@@ -1,7 +1,6 @@
 #include "RemoteCommand.h"
 
 void RemoteCommand::init() {
-	_selectedServo = 0;
 	_inputString = "";
 	_stringComplete = false;
 }
@@ -22,16 +21,6 @@ void RemoteCommand::readCommand() {
 	}
 }
 
-boolean RemoteCommand::isStartCommand() {
-	// TODO
-	return false;
-}
-
-boolean RemoteCommand::isStopCommand() {
-	// TODO
-	return false;
-}
-
 // Called from loop()
 boolean RemoteCommand::received() {
 	return _stringComplete;
@@ -44,6 +33,9 @@ ParsedCommand RemoteCommand::_parse() {
 	ParsedCommand data;
 	data.cmd = "";
 	data.arg = "";
+  if (!_stringComplete) {
+    return data;
+  }
 	int dataLength = _inputString.length();
 	int sepPos = _inputString.indexOf(COMMAND_SEPARATOR);
 	if (sepPos == -1) return data;
@@ -54,34 +46,13 @@ ParsedCommand RemoteCommand::_parse() {
 	return data;
 }
 
-// TODO dispatch in StateCommanded or in robot
-/*
-void RemoteCommand::_dispatch(ParsedCommand data) {
-  if(data.cmd == COMMAND_ANGLE) {
-    _robot->directMove(_selectedServo, data.arg.toInt());
-  }
-  if(data.cmd == COMMAND_SERVO) {
-    _selectedServo = data.arg.toInt();
-  }
-}
-*/
-
 // Called from loop()
-// free flag _stringComplete
-void RemoteCommand::execute() {
-
-	if (!_stringComplete) {
-		return;
-	}
+ParsedCommand RemoteCommand::get() {
 
 	ParsedCommand data = _parse();
-	//_dispatch(data);
 
 	_inputString = "";
 	_stringComplete = false;
 
-	Serial.print("Cmd:");
-	Serial.println(data.cmd);
-	Serial.print("Arg:");
-	Serial.println(data.arg);
+  return data;
 }

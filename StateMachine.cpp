@@ -16,11 +16,10 @@ void StateMachine::setCurrentState(State *state) {
 
 void StateMachine::run() {
 	if (_command->received()) {
-
-		// TODO do not stop each loop
-
-		_currentState->stop();
-		setCurrentState(&stateCommanded);
+		if(_command->isStartCommand()) {
+			_currentState->stop();
+			setCurrentState(&stateCommanded);
+		}
 	}
 	State *newState = _currentState->run();
 	setCurrentState(newState);

@@ -2,22 +2,29 @@
 
 State *StateCommanded::run() {
 	if (isFirstLoop()) {
-		_robot->_ecran.showCommand(_command);
 	}
-	start();
-	if (_ended) {
-		_ended = false;
+	ParsedCommand data = _command->get();
+	if(data.cmd == "") {
+		return (State *)this;
+	}
+	_robot->_ecran.showCommand(data);
+	if (data.cmd == COMMAND_START) {
+		start();
+	}
+	if (data.cmd == COMMAND_END) {
 		_robot->_ecran.clear();
 		stop();
 		return _stateIdle;
+	}
+	if (data.cmd == COMMAND_ANGLE) {
+		_robot->directMove(_selectedServo, data.arg.toInt());
+	}
+	if (data.cmd == COMMAND_SERVO) {
+		_selectedServo = data.arg.toInt();
 	}
 	return (State *)this;
 }
 
 void StateCommanded::setCommand(RemoteCommand *command) {
 	_command = command;
-}
-
-void StateCommanded::endCommand() {
-	_ended : true;
 }

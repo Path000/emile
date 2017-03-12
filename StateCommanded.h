@@ -4,7 +4,10 @@
 #include "State.h"
 #include "RemoteCommand.h"
 
-#define COMMAND_DELAY 3000
+#define COMMAND_SERVO "SERVO"
+#define COMMAND_ANGLE "ANGLE"
+#define COMMAND_START "START"
+#define COMMAND_END "END"
 
 class StateCommanded : public State {
 	public:
@@ -12,6 +15,8 @@ class StateCommanded : public State {
 		void setCommand(ParsedCommand *command);
 	private:
 		RemoteCommand *_command;
+		void _dispatch(ParsedCommand data);
+		byte _selectedServo;
 };
 
 #endif

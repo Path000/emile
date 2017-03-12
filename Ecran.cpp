@@ -49,11 +49,14 @@ void Ecran::clear() {
 	display.display();
 }
 
-void Ecran::showCommand(String command) {
+void Ecran::showCommand(ParsedCommand command) {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);
 	display.setTextSize(1);
-	display.println(command);
+	display.print("Cmd:");
+	display.println(data.cmd);
+	display.print("Arg:");
+	display.println(data.arg);
 	display.display();
 }

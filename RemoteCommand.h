@@ -4,8 +4,6 @@
 #include <Arduino.h>
 
 #define COMMAND_SEPARATOR ':'
-#define COMMAND_SERVO "SERVO"
-#define COMMAND_ANGLE "ANGLE"
 
 typedef struct {
 	String cmd;
@@ -17,16 +15,13 @@ class RemoteCommand {
 		void init();
 		void readCommand();
 		boolean received();
-		boolean isStartCommand();
-		boolean isStopCommand();
-		void execute();
+		ParsedCommand get();
 	private:
 		// TODO dispatch in StateCommanded
 		//void _dispatch(ParsedCommand data);
 		ParsedCommand _parse();
 		String _inputString;
 		boolean _stringComplete;
-		byte _selectedServo;
 };
 
 #endif

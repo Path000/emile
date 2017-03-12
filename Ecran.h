@@ -5,6 +5,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include "RemoteCommand.h"
 
 #if (SSD1306_LCDHEIGHT != 64)
 #error("Height incorrect, please fix Adafruit_SSD1306.h!");
@@ -19,7 +20,7 @@ class Ecran {
 		void orientation(int x, int y, int z);
 		void clear();
 		void eyes();
-		void showCommand(String command);
+		void showCommand(ParsedCommand command);
 	private:
 };
 
