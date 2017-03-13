@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ash Control</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" href="/raspberry_pi_logo.png">
+</head>
+<body>
+<script src="/jquery-2.1.4.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+KP : <input id="input-kp" value="" /><br/>
+KI : <input id="input-ki" value="" /><br/>
+KD : <input id="input-kd" value="" /><br/>
+<button id="buttonPID">Ok</button><br/>
+<button id="buttonStopMotor">Stop moteurs</button><br/>
+<button id="buttonStartMotor">Start moteurs</button><br/>
+<br/>
+<button id="buttonForward">Avancer</button><br/>
+<button id="buttonBackward">Reculer</button><br/>
+<button id="buttonTurnLeft">Gauche</button><br/>
+<button id="buttonTurnRight">Droite</button><br/>
+<button id="buttonStop">Stop</button>
+<script>
+  var socket = io.connect('http://raspberrywlan:8080/');
+  socket.on('reset', function (data) {
+    $('#input-kp').val(data.kp);
+    $('#input-ki').val(data.ki);
+    $('#input-kd').val(data.kd);
+  });
+  $('#buttonPID').click(function() {
+    var data = {};
+    data.kp = $('#input-kp').val();
+    data.ki = $('#input-ki').val();
+    data.kd = $('#input-kd').val();
+    socket.emit('command', {action: 'changePID', data: data});
+  });
+
+  $('#buttonStopMotor').click(function() {
+    socket.emit('command', {action: 'stopMotors', data: {}});
+  });
+  $('#buttonStartMotor').click(function() {
+    socket.emit('command', {action: 'startMotors', data: {}});
+  });
+
+  $('#buttonForward').click(function() {
+    socket.emit('command', {action: 'forward', data: {}});
+  });
+  $('#buttonBackward').click(function() {
+    socket.emit('command', {action: 'backward', data: {}});
+  });
+  $('#buttonTurnLeft').click(function() {
+    socket.emit('command', {action: 'left', data: {}});
+  });
+  $('#buttonTurnRight').click(function() {
+    socket.emit('command', {action: 'right', data: {}});
+  });
+  $('#buttonStop').click(function() {
+    socket.emit('command', {action: 'stop', data: {}});
+  });
+
+</script>
+</doby>
+</html>
