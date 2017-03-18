@@ -1,4 +1,4 @@
-//var Arduino = require('./arduino.js');
+var Arduino = require('./arduino.js');
 let WebServer = require('./web.js');
 
 const exitHandler = (options, err) => {
@@ -16,7 +16,7 @@ process.on('SIGINT', exitHandler.bind(null, {exit:true}));
 process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
 
-/*
+
 
 var arduino = new Arduino();
 
@@ -24,19 +24,11 @@ arduino.on('ready', function() {
   console.log('Arduino ready');
 });
 
-arduino.on('COUNT', function(data) {
-  console.log('Arduino COUNT left: '+data.args[0])
-  console.log('Arduino COUNT right: '+data.args[1])
-  speedHelper.setCoderCount(data.args[0], data.args[1]);
-  var speedCurrentTicksPerMSec = speedHelper.getSpeedCurrentTicksPerMSec();
-  inclinaisonSetpoint = pidSpeed2SetpointAngle.getPID(speedSetpointTicksPerMSec, speedCurrentTicksPerMSec);
-})
-
 arduino.on('CONSOLE', function(data) {
   console.log('[ARDUINO CONSOLE]'+data.args);
 });
 
-*/
+
 
 
 
@@ -49,12 +41,16 @@ webServer.on('ready', function() {
 
 webServer.on('slider', function(data) {
   console.log(`motor:${data.motor} - value:${data.value}`);
+  arduino.writeSerial(`SERVO:${data.motor}`);
+  arduino.writeSerial(`ANGLE:${data.value}`);
 });
 
 webServer.on('start', function(data) {
   console.log(`start`);
+  arduino.writeSerial(`START`);
 });
 
 webServer.on('stop', function(data) {
   console.log(`stop`);
+  arduino.writeSerial(`STOP`);
 });

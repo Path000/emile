@@ -9,7 +9,7 @@ State *StateCommanded::run() {
 	_robot->_ecran.showCommand(data);
 	if (data.cmd == COMMAND_START) {
 	}
-	if (data.cmd == COMMAND_END) {
+	if (data.cmd == COMMAND_STOP) {
 		_robot->_ecran.clear();
 		return _stateIdle;
 	}

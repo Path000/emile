@@ -7,7 +7,7 @@
 #define COMMAND_SERVO "SERVO"
 #define COMMAND_ANGLE "ANGLE"
 #define COMMAND_START "START"
-#define COMMAND_END "END"
+#define COMMAND_END "STOP"
 
 class StateCommanded : public State {
 	public:

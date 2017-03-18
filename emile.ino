@@ -17,7 +17,7 @@ void loop() {
 	if (Serial.available()) {
 		delay(100);
 		Serial.println("available");
-		//command.readCommand();
+		command.readCommand();
 	}
 	stateMachine.run();
 	delay(100);
