@@ -3,7 +3,7 @@
 //var Arduino = require('./modules/arduino.js');
 let WebServer = require('./modules/web.js');
 
-exitHandler(options, err) => {
+const exitHandler = (options, err) => {
   //clean all
   if (options.cleanup) console.log('clean');
   if (err) console.log(err.stack);

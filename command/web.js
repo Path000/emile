@@ -5,7 +5,7 @@ var socketio = require('socket.io');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
-var WebServer = function(port) {
+const WebServer = (port) => {
 	EventEmitter.call(this);
   var app = express();
   var server = http.Server(app);
