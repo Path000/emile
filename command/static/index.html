@@ -1,15 +1,337 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ash Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emile Control</title>
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" type="image/png" href="/raspberry_pi_logo.png">
+  <link rel="stylesheet" href="jquery-ui.min.css">
+  <link rel="stylesheet" href="jquery-ui.theme.min.css">
+  <script src="external/jquery/jquery.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <style type="text/css">
+    body {
+      margin: 10px;
+      white-space:nowrap;
+    }
+    span {
+      font-size: 20px;
+      font-family: "verdana";
+    }
+    .my-slider {
+      width: 360px;
+      margin: auto;
+    }
+    .section {
+      margin-bottom: 20px;
+      width: 100px;
+    }
+    .head {
+      width: 100%;
+    }
+    .col-gauche {
+      float:left;
+      width: 50%;
+    }
+    .col-droite {
+      float:right;
+      width: 50%;
+    }
+  </style>
 </head>
 <body>
-<script src="/jquery-2.1.4.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+  <div class="section">
+    <button id="buttonStart" class="ui-button ui-corner-all ui-widget">Start</button> <button id="buttonStop" class="ui-button ui-corner-all ui-widget">Stop</button>
+  </div>
 
+  <div class="head">
+    <div class="section"><span>SERVO_TETE </span><span id="sliderT-val">90</span></div>
+    <div class="section"><div id="sliderT" class="my-slider"></div></div>
+
+    <div class="section"><br/></div>
+  </div>
+
+  <div class="col-gauche">
+    <div class="section"><span>SERVO_EPAULE_Z_G </span><span id="sliderEZG-val">90</span></div>
+    <div class="section"><div id="sliderEZG" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_EPAULE_X_G </span><span id="sliderEXG-val">90</span></div>
+    <div class="section"><div id="sliderEXG" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_COUDE_G </span><span id="sliderCG-val">90</span></div>
+    <div class="section"><div id="sliderCG" class="my-slider"></div></div>
+
+    <div class="section"><br/></div>
+
+    <div class="section"><span>SERVO_HANCHE_G </span><span id="sliderHG-val">90</span></div>
+    <div class="section"><div id="sliderHG" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_GENOU_G </span><span id="sliderGG-val">90</span></div>
+    <div class="section"><div id="sliderGG" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_PIED_G </span><span id="sliderPG-val">90</span></div>
+    <div class="section"><div id="sliderPG" class="my-slider"></div></div>
+  </div>
+
+  <div class="col-droite">
+    <div class="section"><span>SERVO_EPAULE_Z_D </span><span id="sliderEZD-val">90</span></div>
+    <div class="section"><div id="sliderEZD" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_EPAULE_X_D </span><span id="sliderEXD-val">90</span></div>
+    <div class="section"><div id="sliderEXD" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_COUDE_D </span><span id="sliderCD-val">90</span></div>
+    <div class="section"><div id="sliderCD" class="my-slider"></div></div>
+
+    <div class="section"><br/></div>
+
+    <div class="section"><span>SERVO_HANCHE_D </span><span id="sliderHD-val">90</span></div>
+    <div class="section"><div id="sliderHD" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_GENOU_D </span><span id="sliderGD-val">90</span></div>
+    <div class="section"><div id="sliderGD" class="my-slider"></div></div>
+
+    <div class="section"><span>SERVO_PIED_D </span><span id="sliderPD-val">90</span></div>
+    <div class="section"><div id="sliderPD" class="my-slider"></div></div>
+  </div>
+<script>
+  var socket = io.connect('http://localhost:8080');
+
+  socket.on('ready', function (data) {
+    console.log('server ready');
+  });
+
+  $('#buttonStart').click(function() {
+    socket.emit('command', {action: 'start', data: {}});
+  });
+  $('#buttonStop').click(function() {
+    socket.emit('command', {action: 'stop', data: {}});
+  });
+
+  $( "#sliderPD" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderPD-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 0, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderPD-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderPD-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderGD" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderGD-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 1, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderGD-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderGD-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderHD" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderHD-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 2, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderHD-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderHD-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderCD" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderCD-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 3, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderCD-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderCD-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderEXD" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderEXD-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 4, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderEXD-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderEXD-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderEZD" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderEZD-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 5, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderEZD-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderEZD-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderT" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderT-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 6, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderT-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderT-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderEZG" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderEZG-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 7, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderEZG-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderEZG-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderEXG" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderEXG-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 8, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderEXG-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderEXG-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderCG" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderCG-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 9, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderCG-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderCG-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderHG" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderHG-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 10, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderHG-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderHG-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderGG" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderGG-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 11, value: ui.value}});
+    },
+    start: function( event, ui ) {
+      $('#sliderGG-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderGG-val').html('-'+ui.value+'-');
+    },
+    orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+
+  $( "#sliderPG" ).slider({
+    slide: function( event, ui ) {
+      $('#sliderPG-val').html(ui.value);
+      socket.emit('command', {action: 'slider', data: {motor: 12, value: ui.value}});
+    },
+     start: function( event, ui ) {
+      $('#sliderPG-val').html(ui.value);
+    },
+    stop: function( event, ui ) {
+      $('#sliderPG-val').html('-'+ui.value+'-');
+    },
+   orientation: "horizontal",
+    min: 0,
+    max: 180,
+    value: 90
+  });
+</script>
+<!--
 #define SERVO_PIED_D      0
 #define SERVO_GENOU_D     1
 #define SERVO_HANCHE_D    2
@@ -23,7 +345,6 @@
 #define SERVO_HANCHE_G    10
 #define SERVO_GENOU_G     11
 #define SERVO_PIED_G      12
-
 KP : <input id="input-kp" value="" /><br/>
 KI : <input id="input-ki" value="" /><br/>
 KD : <input id="input-kd" value="" /><br/>
@@ -37,12 +358,7 @@ KD : <input id="input-kd" value="" /><br/>
 <button id="buttonTurnRight">Droite</button><br/>
 <button id="buttonStop">Stop</button>
 <script>
-  var socket = io.connect('http://10.0.0.2:8080/');
-  socket.on('reset', function (data) {
-    $('#input-kp').val(data.kp);
-    $('#input-ki').val(data.ki);
-    $('#input-kd').val(data.kd);
-  });
+
   $('#buttonPID').click(function() {
     var data = {};
     data.kp = $('#input-kp').val();
@@ -50,30 +366,8 @@ KD : <input id="input-kd" value="" /><br/>
     data.kd = $('#input-kd').val();
     socket.emit('command', {action: 'changePID', data: data});
   });
-
-  $('#buttonStopMotor').click(function() {
-    socket.emit('command', {action: 'stopMotors', data: {}});
-  });
-  $('#buttonStartMotor').click(function() {
-    socket.emit('command', {action: 'startMotors', data: {}});
-  });
-
-  $('#buttonForward').click(function() {
-    socket.emit('command', {action: 'forward', data: {}});
-  });
-  $('#buttonBackward').click(function() {
-    socket.emit('command', {action: 'backward', data: {}});
-  });
-  $('#buttonTurnLeft').click(function() {
-    socket.emit('command', {action: 'left', data: {}});
-  });
-  $('#buttonTurnRight').click(function() {
-    socket.emit('command', {action: 'right', data: {}});
-  });
-  $('#buttonStop').click(function() {
-    socket.emit('command', {action: 'stop', data: {}});
-  });
-
 </script>
+-->
+
 </doby>
 </html>

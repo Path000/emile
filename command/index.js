@@ -42,6 +42,24 @@ arduino.on('CONSOLE', function(data) {
 
 var webServer = new WebServer(8080);
 
+webServer.on('ready', function() {
+  console.log('WEB ready');
+  webServer.send('ready', {});
+});
+
+webServer.on('slider', function(data) {
+  console.log(`motor:${data.motor} - value:${data.value}`);
+});
+
+webServer.on('start', function(data) {
+  console.log(`start`);
+});
+
+webServer.on('stop', function(data) {
+  console.log(`stop`);
+});
+
+/*
 webServer.on('changePID', function(data) {
   if(data.kp) pidSpeed2SetpointAngle.setKP(data.kp);
   if(data.ki) pidSpeed2SetpointAngle.setKI(data.ki);
@@ -70,12 +88,4 @@ webServer.on('right', function(data) {
 webServer.on('stop', function(data) {
   speedSetpointTicksPerMSec = 0;
 });
-webServer.on('ready', function() {
-  console.log('WEB ready');
-  var data = {};
-  data.kp = pidSpeed2SetpointAngle.getKP();
-  data.ki = pidSpeed2SetpointAngle.getKI();
-  data.kd = pidSpeed2SetpointAngle.getKD();
-
-  webServer.send('reset', data);
-});
+*/

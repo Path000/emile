@@ -5,30 +5,31 @@ let EventEmitter = require('events').EventEmitter;
 let util = require('util');
 
 class WebServer extends EventEmitter {
-
   constructor(port) {
+    super();
     this.app = express();
-    this.server = http.Server(app);
-    this.sio = socketio(server);
-
-    sio.on('connection', (socket) => {
-      emit('ready', {});
+    this.server = http.Server(this.app);
+    this.sio = socketio(this.server);
+    this.sio.on('connection', (socket) => {
+      this.emit('ready', {});
       socket.on('command', (data) => {
-        receive(data);
+        this.receive(data);
       });
     });
 
-    app.use(express.static(__dirname + '/static'));
+    this.app.use(express.static(__dirname + '/static'));
 
-    server.listen(port);
+    this.server.listen(port, ()=>{
+      console.log(`Listening ${port}`);
+    });
   }
 
   receive(data) {
-    emit(data.action, data.data);
+    this.emit(data.action, data.data);
   }
 
   send(action, data) {
-    sio.sockets.emit(action, data);
+    this.sio.sockets.emit(action, data);
   }
 }
 
