@@ -7,11 +7,11 @@ var util = require('util');
 class WebServer extends EventEmitter {
 
   constructor(port) {
-    this.app = express();
-    this.server = http.Server(app);
-    this.sio = socketio(server);
+    app = express();
+    server = http.Server(app);
+    sio = socketio(server);
 
-    this.sio.on('connection', (socket) => {
+    sio.on('connection', (socket) => {
       emit('ready', {});
       socket.on('command', (data) => {
         receive(data);
