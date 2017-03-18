@@ -1,7 +1,7 @@
 "use strict";
 
-//var Arduino = require('./modules/arduino.js');
-let WebServer = require('./modules/web.js');
+//var Arduino = require('./arduino.js');
+let WebServer = require('./web.js');
 
 const exitHandler = (options, err) => {
   //clean all
