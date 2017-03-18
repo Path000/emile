@@ -1,5 +1,3 @@
-"use strict";
-
 var serialPortModule = require("serialport");
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');

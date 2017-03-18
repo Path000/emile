@@ -1,5 +1,3 @@
-"use strict";
-
 //var Arduino = require('./arduino.js');
 let WebServer = require('./web.js');
 
