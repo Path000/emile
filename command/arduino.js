@@ -1,6 +1,5 @@
-var serialPortModule = require("serialport");
-var EventEmitter = require('events').EventEmitter;
-var util = require('util');
+let serialPortModule = require("serialport");
+let EventEmitter = require('events').EventEmitter;
 
 /*
 serialPortModule.list(function (err, ports) {
@@ -13,44 +12,45 @@ serialPortModule.list(function (err, ports) {
 });
 */
 
-function Arduino() {
-  EventEmitter.call(this);
+class Arduino extends EventEmitter {
 
-  this.serialIsOpened = false;
-  var self = this;
+  constructor() {
+    super();
+    this.serialIsOpened = false;
 
-  this.serialPort = new serialPortModule.SerialPort("/dev/ttyACM0", {
-    baudrate: 115200,
-  	parser: serialPortModule.parsers.readline('\n')
-  });
-
-  this.serialPort.on("open", function () {
-  	self.serialIsOpened = true;
-    self.emit('ready', {});
-
-    self.serialPort.on('data', function(data) {
-      self.deserializeWhatDuinoSays(data);
+    this.serialPort = new serialPortModule.SerialPort("/dev/ttyACM0", {
+      baudrate: 115200,
+      parser: serialPortModule.parsers.readline('\n')
     });
-  });
-}
-util.inherits(Arduino, EventEmitter);
 
-Arduino.prototype.deserializeWhatDuinoSays = function(data) {
-  //console.log('[Arduino says]'+data);
-  var splitedData = data.split(':');
-  var command = splitedData.shift();
-  this.emit(command, {args: splitedData});
-}
+    this.serialPort.on("open", () => {
+      this.serialIsOpened = true;
+      this.emit('ready', {});
 
-Arduino.prototype.writeSerial = function(message, next) {
-  if(this.serialIsOpened) {
-    //console.log(message);
-    this.serialPort.write(message+"\n", function(err, results) {
-      //console.log('err ' + err);
-      //console.log('results ' + results);
-      if(next)next();
+      this.serialPort.on('data', (data) => {
+        this.deserializeWhatDuinoSays(data);
+      });
     });
   }
+
+  deserializeWhatDuinoSays(data) {
+    //console.log('[Arduino says]'+data);
+    var splitedData = data.split(':');
+    var command = splitedData.shift();
+    this.emit(command, {args: splitedData});
+  }
+
+  writeSerial(message, next) {
+    if(this.serialIsOpened) {
+      //console.log(message);
+      this.serialPort.write(message+"\n", function(err, results) {
+        //console.log('err ' + err);
+        //console.log('results ' + results);
+        if(next)next();
+      });
+    }
+  }
 }
+
 
 module.exports = Arduino;

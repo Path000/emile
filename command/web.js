@@ -2,7 +2,6 @@ let express = require('express');
 let http = require('http');
 let socketio = require('socket.io');
 let EventEmitter = require('events').EventEmitter;
-let util = require('util');
 
 class WebServer extends EventEmitter {
   constructor(port) {
