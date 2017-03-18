@@ -1,8 +1,8 @@
-var express = require('express');
-var http = require('http');
-var socketio = require('socket.io');
-var EventEmitter = require('events').EventEmitter;
-var util = require('util');
+let express = require('express');
+let http = require('http');
+let socketio = require('socket.io');
+let EventEmitter = require('events').EventEmitter;
+let util = require('util');
 
 class WebServer extends EventEmitter {
 
