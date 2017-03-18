@@ -6,6 +6,10 @@ void Robot::init() {
 	_sensor.init();
 	_ecran.init();
 
+// TODO câblage
+// On the Arduino Mega, it works on pins 2 - 13 and 44 - 46.
+// Virer 5 et 6  https://www.arduino.cc/en/Reference/analogWrite
+
 	MyServo servoPD(  4,  (char *)"Pied droit",      0, 90, 180);
 	MyServo servoGD(  3,  (char *)"Genou droit",     0, 90, 180);
 	MyServo servoHD(  2,  (char *)"Hanche droite",   0, 90, 180);
