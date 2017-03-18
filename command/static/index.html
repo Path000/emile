@@ -5,7 +5,7 @@
   <title>Emile Control</title>
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" type="image/png" href="/raspberry_pi_logo.png">
+  <link rel="icon" type="image/png" href="/IMG_3472.jpg">
   <link rel="stylesheet" href="jquery-ui.min.css">
   <link rel="stylesheet" href="jquery-ui.theme.min.css">
   <script src="external/jquery/jquery.js"></script>
@@ -331,6 +331,7 @@
     value: 90
   });
 </script>
+
 <!--
 #define SERVO_PIED_D      0
 #define SERVO_GENOU_D     1
@@ -345,28 +346,6 @@
 #define SERVO_HANCHE_G    10
 #define SERVO_GENOU_G     11
 #define SERVO_PIED_G      12
-KP : <input id="input-kp" value="" /><br/>
-KI : <input id="input-ki" value="" /><br/>
-KD : <input id="input-kd" value="" /><br/>
-<button id="buttonPID">Ok</button><br/>
-<button id="buttonStopMotor">Stop moteurs</button><br/>
-<button id="buttonStartMotor">Start moteurs</button><br/>
-<br/>
-<button id="buttonForward">Avancer</button><br/>
-<button id="buttonBackward">Reculer</button><br/>
-<button id="buttonTurnLeft">Gauche</button><br/>
-<button id="buttonTurnRight">Droite</button><br/>
-<button id="buttonStop">Stop</button>
-<script>
-
-  $('#buttonPID').click(function() {
-    var data = {};
-    data.kp = $('#input-kp').val();
-    data.ki = $('#input-ki').val();
-    data.kd = $('#input-kd').val();
-    socket.emit('command', {action: 'changePID', data: data});
-  });
-</script>
 -->
 
 </doby>
