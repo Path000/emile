@@ -1,9 +1,9 @@
 "use strict";
 
-var Arduino = require('./modules/arduino.js');
-var WebServer = require('./modules/web.js');
+//var Arduino = require('./modules/arduino.js');
+let WebServer = require('./modules/web.js');
 
-function exitHandler(options, err) {
+exitHandler(options, err) => {
   //clean all
   if (options.cleanup) console.log('clean');
   if (err) console.log(err.stack);
@@ -18,7 +18,7 @@ process.on('SIGINT', exitHandler.bind(null, {exit:true}));
 process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
 
-
+/*
 
 var arduino = new Arduino();
 
@@ -38,7 +38,7 @@ arduino.on('CONSOLE', function(data) {
   console.log('[ARDUINO CONSOLE]'+data.args);
 });
 
-
+*/
 
 
 

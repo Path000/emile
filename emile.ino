@@ -7,7 +7,7 @@ Robot robot;
 StateMachine stateMachine;
 
 void setup() {
-	Serial.begin(9600);
+	Serial.begin(115200);
 	robot.init();
 	command.init();
 	stateMachine.init(&robot, &command);
