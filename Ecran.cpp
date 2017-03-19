@@ -32,7 +32,7 @@ void Ecran::orientation(int x, int y, int z) {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);
-	display.setTextSize(1);
+	display.setTextSize(2);
 	display.print("x:");
 	display.println(x);
 	display.println("");
@@ -53,7 +53,7 @@ void Ecran::showCommand(ParsedCommand command) {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);
-	display.setTextSize(1);
+	display.setTextSize(2);
 	display.print("Cmd:");
 	display.println(command.cmd);
 	display.print("index:");

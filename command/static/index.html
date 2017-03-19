@@ -130,13 +130,13 @@
   $( "#sliderGD" ).slider({
     slide: function( event, ui ) {
       $('#sliderGD-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 1, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderGD-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderGD-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 1, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -147,13 +147,13 @@
   $( "#sliderHD" ).slider({
     slide: function( event, ui ) {
       $('#sliderHD-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 2, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderHD-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderHD-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 2, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -164,13 +164,13 @@
   $( "#sliderCD" ).slider({
     slide: function( event, ui ) {
       $('#sliderCD-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 3, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderCD-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderCD-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 3, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -181,13 +181,13 @@
   $( "#sliderEXD" ).slider({
     slide: function( event, ui ) {
       $('#sliderEXD-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 4, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderEXD-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderEXD-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 4, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -198,13 +198,13 @@
   $( "#sliderEZD" ).slider({
     slide: function( event, ui ) {
       $('#sliderEZD-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 5, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderEZD-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderEZD-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 5, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -215,13 +215,13 @@
   $( "#sliderT" ).slider({
     slide: function( event, ui ) {
       $('#sliderT-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 6, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderT-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderT-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 6, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -232,13 +232,13 @@
   $( "#sliderEZG" ).slider({
     slide: function( event, ui ) {
       $('#sliderEZG-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 7, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderEZG-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderEZG-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 7, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -249,13 +249,13 @@
   $( "#sliderEXG" ).slider({
     slide: function( event, ui ) {
       $('#sliderEXG-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 8, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderEXG-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderEXG-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 8, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -266,13 +266,13 @@
   $( "#sliderCG" ).slider({
     slide: function( event, ui ) {
       $('#sliderCG-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 9, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderCG-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderCG-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 9, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -283,13 +283,13 @@
   $( "#sliderHG" ).slider({
     slide: function( event, ui ) {
       $('#sliderHG-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 10, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderHG-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderHG-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 10, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -300,13 +300,13 @@
   $( "#sliderGG" ).slider({
     slide: function( event, ui ) {
       $('#sliderGG-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 11, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderGG-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderGG-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 11, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
@@ -317,13 +317,13 @@
   $( "#sliderPG" ).slider({
     slide: function( event, ui ) {
       $('#sliderPG-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 12, value: ui.value}});
     },
      start: function( event, ui ) {
       $('#sliderPG-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderPG-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 12, value: ui.value}});
     },
    orientation: "horizontal",
     min: 0,
