@@ -30,6 +30,35 @@ ParsedCommand RemoteCommand::_parse() {
 
 	ParsedCommand data;
 	data.cmd = "";
+	data.arrayArgs = {""};
+	if (!_stringComplete) {
+		return data;
+	}
+
+	int dataLength = _inputString.length();
+	int firstSep = _inputString.indexOf(SEPARATOR);
+	if(firstSep == -1) {
+		data.cmd = _inputString;
+		return data;
+	}
+	if(firstSep + 1 >= dataLength) return data;
+	data.cmd = _inputString.substring(0,firstSep);
+	// get args
+	unsigned int index = 0;
+	while(firstSep + 1 < dataLength && index < MAX_ARGS) {
+		int secondSep = _inputString.indexOf(SEPARATOR, firstSep+1);
+		// pour le dernier argument
+		if(secondSep == -1) {
+		  secondSep = dataLength;
+		}
+		String arg = _inputString.substring(firstSep+1, secondSep);
+		firstSep = secondSep;
+		data.arrayArgs[index] = arg;
+		index++;
+	}
+/*
+	ParsedCommand data;
+	data.cmd = "";
 	data.arg = "";
 	if (!_stringComplete) {
 		return data;
@@ -45,6 +74,7 @@ ParsedCommand RemoteCommand::_parse() {
 	data.cmd = _inputString.substring(0, sepPos);
 	data.arg = _inputString.substring(sepPos, dataLength - 1);
 	return data;
+	*/
 }
 
 // Called from loop()

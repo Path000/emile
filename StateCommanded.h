@@ -5,7 +5,6 @@
 #include "RemoteCommand.h"
 
 #define COMMAND_SERVO "SERVO"
-#define COMMAND_ANGLE "ANGLE"
 #define COMMAND_START "START"
 #define COMMAND_STOP "STOP"
 
@@ -15,7 +14,6 @@ class StateCommanded : public State {
 		void setCommand(RemoteCommand *command);
 	private:
 		RemoteCommand *_command;
-		byte _selectedServo;
 };
 
 #endif

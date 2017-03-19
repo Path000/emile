@@ -4,10 +4,11 @@
 #include <Arduino.h>
 
 #define COMMAND_SEPARATOR ':'
+#define MAX_ARGS 4
 
 typedef struct {
 	String cmd;
-	String arg;
+	String arrayArgs[MAX_ARGS];
 } ParsedCommand;
 
 class RemoteCommand {

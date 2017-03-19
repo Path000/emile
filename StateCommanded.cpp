@@ -16,10 +16,12 @@ State *StateCommanded::run() {
 		return _stateIdle;
 	}
 	if (data.cmd == COMMAND_ANGLE) {
-		_robot->directMove(_selectedServo, data.arg.toInt());
+
 	}
 	if (data.cmd == COMMAND_SERVO) {
-		_selectedServo = data.arg.toInt();
+		int index = data.arrayArgs[0].toInt();
+		int angle = data.arrayArgs[1].toInt();
+		_robot->directMove(index, angle);
 	}
 	return (State *)this;
 }

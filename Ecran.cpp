@@ -56,7 +56,9 @@ void Ecran::showCommand(ParsedCommand command) {
 	display.setTextSize(1);
 	display.print("Cmd:");
 	display.println(command.cmd);
-	display.print("Arg:");
-	display.println(command.arg);
+	display.print("index:");
+	display.println(data.arrayArgs[0].toInt());
+	display.print("angle:");
+	display.println(data.arrayArgs[1].toInt());
 	display.display();
 }

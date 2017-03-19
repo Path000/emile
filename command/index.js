@@ -41,8 +41,8 @@ webServer.on('ready', function() {
 
 webServer.on('slider', function(data) {
   console.log(`motor:${data.motor} - value:${data.value}`);
-  arduino.writeSerial(`SERVO:${data.motor}`);
-  arduino.writeSerial(`ANGLE:${data.value}`);
+  //SERVO:<index>:<angle>
+  arduino.writeSerial(`SERVO:${data.motor}:${data.value}`);
 });
 
 webServer.on('start', function(data) {
