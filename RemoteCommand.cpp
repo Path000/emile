@@ -34,7 +34,7 @@ ParsedCommand RemoteCommand::_parse() {
 	}
 
 	int dataLength = _inputString.length();
-	int firstSep = _inputString.indexOf(SEPARATOR);
+	int firstSep = _inputString.indexOf(COMMAND_SEPARATOR);
 	if(firstSep == -1) {
 		data.cmd = _inputString;
 		return data;
@@ -44,7 +44,7 @@ ParsedCommand RemoteCommand::_parse() {
 	// get args
 	unsigned int index = 0;
 	while(firstSep + 1 < dataLength && index < MAX_ARGS) {
-		int secondSep = _inputString.indexOf(SEPARATOR, firstSep+1);
+		int secondSep = _inputString.indexOf(COMMAND_SEPARATOR, firstSep+1);
 		// pour le dernier argument
 		if(secondSep == -1) {
 		  secondSep = dataLength;
