@@ -113,13 +113,13 @@
   $( "#sliderPD" ).slider({
     slide: function( event, ui ) {
       $('#sliderPD-val').html(ui.value);
-      socket.emit('command', {action: 'slider', data: {motor: 0, value: ui.value}});
     },
     start: function( event, ui ) {
       $('#sliderPD-val').html(ui.value);
     },
     stop: function( event, ui ) {
       $('#sliderPD-val').html('-'+ui.value+'-');
+      socket.emit('command', {action: 'slider', data: {motor: 0, value: ui.value}});
     },
     orientation: "horizontal",
     min: 0,
