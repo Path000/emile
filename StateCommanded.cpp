@@ -6,7 +6,9 @@ State *StateCommanded::run() {
 	if(data.cmd == "") {
 		return (State *)this;
 	}
+
 	_robot->_ecran.showCommand(data);
+
 	if (data.cmd == COMMAND_START) {
 	}
 	if (data.cmd == COMMAND_STOP) {

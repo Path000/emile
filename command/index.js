@@ -1,4 +1,4 @@
-var Arduino = require('./arduino.js');
+let Arduino = require('./arduino.js');
 let WebServer = require('./web.js');
 
 const exitHandler = (options, err) => {
@@ -18,7 +18,7 @@ process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
 
 
-var arduino = new Arduino();
+const arduino = new Arduino();
 
 arduino.on('ready', function() {
   console.log('Arduino ready');

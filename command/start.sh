@@ -1,1 +1,0 @@
-screen -dmS SBR /usr/local/bin/node /home/pi/index.js
