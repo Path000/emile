@@ -15,9 +15,6 @@ State *StateCommanded::run() {
 		_robot->_ecran.clear();
 		return _stateIdle;
 	}
-	if (data.cmd == COMMAND_ANGLE) {
-
-	}
 	if (data.cmd == COMMAND_SERVO) {
 		int index = data.arrayArgs[0].toInt();
 		int angle = data.arrayArgs[1].toInt();
