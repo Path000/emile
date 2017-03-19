@@ -35,10 +35,8 @@ void Ecran::orientation(int x, int y, int z) {
 	display.setTextSize(2);
 	display.print("x:");
 	display.println(x);
-	display.println("");
 	display.print("y:");
 	display.println(y);
-	display.println("");
 	display.print("z:");
 	display.println(z);
 	display.display();
