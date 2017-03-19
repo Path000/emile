@@ -30,7 +30,7 @@ ParsedCommand RemoteCommand::_parse() {
 
 	ParsedCommand data;
 	data.cmd = "";
-	data.arrayArgs = {""};
+	data.arrayArgs = {};
 	if (!_stringComplete) {
 		return data;
 	}
