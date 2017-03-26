@@ -1,26 +1,24 @@
 #include "MyServo.h"
 
-MyServo::MyServo(byte pin, char *nom, unsigned int min, unsigned int rep, unsigned int max) {
+MyServo::MyServo(byte pin, char *nom, byte min, byte rep, byte max) {
+	_pin = pin;
 	_nom = nom;
 	_min = min;
 	_rep = rep;
 	_max = max;
-	_servo.attach(pin);
-	writeRep();
 }
 
-void MyServo::write(unsigned int pos) {
+void MyServo::write(byte angle) {
 	// On défini les bornes
 	if (_max > _min) {
-		if (pos > _max) pos = _max;
+		angle = constrain(angle, _min, _max);
 	} else {
-		if (pos < _min) pos = _min;
+		angle = constrain(angle, _max, _min);
 	}
 
-	_servo.write(pos);
+	analogWrite(_pin, angle);
 }
 
-void MyServo::writeRep() {
-	_servo.write(_rep);
+void MyServo::writeRepPos() {
+	write(_rep);
 }
-
