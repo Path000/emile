@@ -16,7 +16,7 @@ void setup() {
 void loop() {
 	if (Serial.available()) {
 		delay(100);
-		Serial.println("available");
+		//Serial.println("available");
 		command.readCommand();
 	}
 	stateMachine.run();
