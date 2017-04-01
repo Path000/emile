@@ -6,15 +6,11 @@
 class MyServo {
 	public:
 		inline MyServo() {};
-		MyServo(byte pin, char *nom, byte min, byte rep, byte max);
-		void write(byte pos);
-		void writeRepPos();
-	private:
-		byte _pin;
+		MyServo(char *nom, uint8_t min, uint8_t rep, uint8_t max);
 		char *_nom;
-		byte _min;
-		byte _rep;
-		byte _max;
+		uint8_t _min;
+		uint8_t _rep;
+		uint8_t _max;
 };
 
 #endif

@@ -5,24 +5,23 @@
 void Robot::init() {
 	_sensor.init();
 	_ecran.init();
+	_servoDriver = Adafruit_PWMServoDriver();
+	_servoDriver.begin();
+	_servoDriver.setPWMFreq(50);
 
-// TODO câblage
-// On the Arduino Mega, it works on pins 2 - 13 and 44 - 46.
-// Virer 5 et 6  https://www.arduino.cc/en/Reference/analogWrite
-
-	MyServo servoPD(  4,  (char *)"Pied droit",      0, 45, 255); // 0
-	MyServo servoGD(  3,  (char *)"Genou droit",     0, 45, 255); // 1
-	MyServo servoHD(  2,  (char *)"Hanche droite",   0, 45, 255); // 2
-	MyServo servoCD(  7,  (char *)"Coude droit",     0, 45, 255); // 3
-	MyServo servoEDX( 6,  (char *)"Epaule droite X", 0, 45, 255); // 4
-	MyServo servoEDZ( 5,  (char *)"Epaule droite Z", 0, 45, 255); // 5
-	MyServo servoT(   44, (char *)"Tete",            0, 45, 255); // 6
-	MyServo servoEGZ( 10, (char *)"Epaule gauche Z", 0, 45, 255); // 7
-	MyServo servoEGX( 9,  (char *)"Epaule gauche X", 0, 45, 255); // 8
-	MyServo servoCG(  8,  (char *)"Coude gauche",    0, 45, 255); // 9
-	MyServo servoHG(  13, (char *)"Hanche gauche",   0, 45, 255); // 10
-	MyServo servoGG(  12, (char *)"Genou gauche",    0, 45, 255); // 11
-	MyServo servoPG(  11, (char *)"Pied gauche",     0, 45, 255); // 12
+	MyServo servoPD(  (char *)"Pied droit",      100, 200, 500); // 0
+	MyServo servoGD(  (char *)"Genou droit",     100, 200, 500); // 1
+	MyServo servoHD(  (char *)"Hanche droite",   100, 200, 500); // 2
+	MyServo servoCD(  (char *)"Coude droit",     100, 200, 500); // 3
+	MyServo servoEDX( (char *)"Epaule droite X", 100, 200, 500); // 4
+	MyServo servoEDZ( (char *)"Epaule droite Z", 100, 200, 500); // 5
+	MyServo servoT(   (char *)"Tete",            100, 200, 500); // 6
+	MyServo servoEGZ( (char *)"Epaule gauche Z", 100, 200, 500); // 7
+	MyServo servoEGX( (char *)"Epaule gauche X", 100, 200, 500); // 8
+	MyServo servoCG(  (char *)"Coude gauche",    100, 200, 500); // 9
+	MyServo servoHG(  (char *)"Hanche gauche",   100, 200, 500); // 10
+	MyServo servoGG(  (char *)"Genou gauche",    100, 200, 500); // 11
+	MyServo servoPG(  (char *)"Pied gauche",     100, 200, 500); // 12
 	servos[SERVO_PIED_D] =     servoPD;
 	servos[SERVO_GENOU_D] =    servoGD;
 	servos[SERVO_HANCHE_D] =   servoHD;
@@ -38,11 +37,12 @@ void Robot::init() {
 	servos[SERVO_PIED_G] =     servoPG;
 
 	for (byte i = 0; i < 13; i++) {
-		servos[i].writeRepPos();
+		_servoDriver.setPWM(i, 0, servos[i]._rep);
 	}
 }
 
-void Robot::directMove(byte servo, byte pos) {
-	servos[servo].write(pos);
+void Robot::directMove(byte servo, uint8_t pos) {
+	pos = pos = constrain(pos, servos[servo]._min, servos[servo]._max);
+	_servoDriver.setPWM(servo, 0, pos);
 }
 

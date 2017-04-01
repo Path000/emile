@@ -2,6 +2,8 @@
 #define Robot_h
 
 #include <Arduino.h>
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 #include "Ecran.h"
 #include "BNOSensor.h"
 #include "MyServo.h"
@@ -31,6 +33,7 @@ class Robot {
 		void directMove(byte servo, byte pos);
 	private:
 		MyServo servos[NOMBRE_SERVO];
+		Adafruit_PWMServoDriver _servoDriver;
 };
 
 #endif
