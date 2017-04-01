@@ -42,7 +42,7 @@ void Robot::init() {
 	}
 }
 
-void Robot::directMove(byte servo, int angle) {
-	servos[servo].write(angle);
+void Robot::directMove(byte servo, byte pos) {
+	servos[servo].write(pos);
 }
 

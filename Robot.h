@@ -28,7 +28,7 @@ class Robot {
 		void init();
 		Ecran _ecran;
 		BNOSensor _sensor;
-		void directMove(byte servo, byte angle);
+		void directMove(byte servo, byte pos);
 	private:
 		MyServo servos[NOMBRE_SERVO];
 };

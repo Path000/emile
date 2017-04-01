@@ -8,15 +8,15 @@ MyServo::MyServo(byte pin, char *nom, byte min, byte rep, byte max) {
 	_max = max;
 }
 
-void MyServo::write(byte angle) {
+void MyServo::write(byte pos) {
 	// On défini les bornes
 	if (_max > _min) {
-		angle = constrain(angle, _min, _max);
+		pos = constrain(pos, _min, _max);
 	} else {
-		angle = constrain(angle, _max, _min);
+		pos = constrain(pos, _max, _min);
 	}
 
-	analogWrite(_pin, angle);
+	analogWrite(_pin, pos);
 }
 
 void MyServo::writeRepPos() {
