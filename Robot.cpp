@@ -38,7 +38,7 @@ void Robot::init() {
 	servos[SERVO_PIED_G] =     servoPG;
 
 	for (byte i = 0; i < 13; i++) {
-		//servos[i].writeRepPos();
+		servos[i].writeRepPos();
 	}
 }
 
