@@ -21,6 +21,11 @@ State *StateCommanded::run() {
 		uint8_t pos = data.arrayArgs[1].toInt();
 		char *name = _robot->getServoName(index);
 		_robot->_ecran.showCommand(name, pos);
+			Serial.print("CONSOLE:");
+			Serial.print(name);
+			Serial.print(",");
+			Serial.println(pos);
+
 
 		_robot->directMove(index, pos);
 	}

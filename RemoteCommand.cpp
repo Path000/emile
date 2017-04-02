@@ -13,8 +13,8 @@ void RemoteCommand::readCommand() {
 		char inChar = (char)Serial.read();
 		if (inChar == '\n') {
 			_stringComplete = true;
-			Serial.print("CONSOLE:");
-			Serial.println(_inputString);
+			//Serial.print("CONSOLE:");
+			//Serial.println(_inputString);
 		} else {
 			_inputString += inChar;
 		}
