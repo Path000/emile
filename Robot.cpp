@@ -9,19 +9,19 @@ void Robot::init() {
 	_servoDriver.begin();
 	_servoDriver.setPWMFreq(53);
 
-	MyServo servoPD  ((char *)"Pied droit",      0, 200, 4095); // 0
-	MyServo servoGD  ((char *)"Genou droit",     0, 200, 4095); // 1
-	MyServo servoHD  ((char *)"Hanche droite",   0, 200, 4095); // 2
-	MyServo servoCD  ((char *)"Coude droit",     0, 200, 4095); // 3
-	MyServo servoEDX ((char *)"Epaule droite X", 0, 200, 4095); // 4
-	MyServo servoEDZ ((char *)"Epaule droite Z", 0, 200, 4095); // 5
-	MyServo servoT   ((char *)"Tete",            0, 200, 4095); // 6
-	MyServo servoEGZ ((char *)"Epaule gauche Z", 0, 200, 4095); // 7
-	MyServo servoEGX ((char *)"Epaule gauche X", 0, 200, 4095); // 8
-	MyServo servoCG  ((char *)"Coude gauche",    0, 200, 4095); // 9
-	MyServo servoHG  ((char *)"Hanche gauche",   0, 200, 4095); // 10
-	MyServo servoGG  ((char *)"Genou gauche",    0, 200, 4095); // 11
-	MyServo servoPG  ((char *)"Pied gauche",     0, 200, 4095); // 12
+	MyServo servoPD  ((char *)"Pied droit",      70, 200, 600); // 0
+	MyServo servoGD  ((char *)"Genou droit",     70, 200, 600); // 1
+	MyServo servoHD  ((char *)"Hanche droite",   70, 200, 600); // 2
+	MyServo servoCD  ((char *)"Coude droit",     70, 200, 600); // 3
+	MyServo servoEDX ((char *)"Epaule droite X", 70, 200, 600); // 4
+	MyServo servoEDZ ((char *)"Epaule droite Z", 70, 200, 600); // 5
+	MyServo servoT   ((char *)"Tete",            70, 200, 600); // 6
+	MyServo servoEGZ ((char *)"Epaule gauche Z", 70, 200, 600); // 7
+	MyServo servoEGX ((char *)"Epaule gauche X", 70, 200, 600); // 8
+	MyServo servoCG  ((char *)"Coude gauche",    70, 200, 600); // 9
+	MyServo servoHG  ((char *)"Hanche gauche",   70, 200, 600); // 10
+	MyServo servoGG  ((char *)"Genou gauche",    70, 200, 600); // 11
+	MyServo servoPG  ((char *)"Pied gauche",     70, 200, 600); // 12
 
 	servos[SERVO_PIED_D]     = servoPD;
 	servos[SERVO_GENOU_D]    = servoGD;
