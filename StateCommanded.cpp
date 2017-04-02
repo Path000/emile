@@ -18,7 +18,7 @@ State *StateCommanded::run() {
 	}
 	if (data.cmd == COMMAND_SERVO) {
 		byte index = data.arrayArgs[0].toInt();
-		long pos = data.arrayArgs[1].toInt();
+		uint16_t pos = data.arrayArgs[1].toInt();
 		char *name = _robot->getServoName(index);
 		_robot->_ecran.showCommand(name, pos);
 

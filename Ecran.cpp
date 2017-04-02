@@ -56,7 +56,7 @@ void Ecran::showCommandStart() {
 	display.display();
 }
 
-void Ecran::showCommand(char *name, long pos) {
+void Ecran::showCommand(char *name, uint16_t pos) {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);

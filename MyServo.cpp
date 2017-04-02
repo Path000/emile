@@ -1,6 +1,6 @@
 #include "MyServo.h"
 
-MyServo::MyServo(char *nom, uint8_t min, uint8_t rep, uint8_t max) {
+MyServo::MyServo(char *nom, uint16_t min, uint16_t rep, uint16_t max) {
 	_nom = nom;
 	_min = min;
 	_rep = rep;

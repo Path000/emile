@@ -6,11 +6,11 @@
 class MyServo {
 	public:
 		inline MyServo() {};
-		MyServo(char *nom, uint8_t min, uint8_t rep, uint8_t max);
+		MyServo(char *nom, uint16_t min, uint16_t rep, uint16_t max);
 		char *_nom;
-		uint8_t _min;
-		uint8_t _rep;
-		uint8_t _max;
+		uint16_t _min;
+		uint16_t _rep;
+		uint16_t _max;
 };
 
 #endif

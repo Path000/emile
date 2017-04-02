@@ -19,7 +19,7 @@ class Ecran {
 		void orientation(int x, int y, int z);
 		void clear();
 		void eyes();
-		void showCommand(char *name, long pos);
+		void showCommand(char *name, uint16_t pos);
 		void showCommandStart();
 	private:
 };
