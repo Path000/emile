@@ -30,7 +30,7 @@ class Robot {
 		void init();
 		Ecran _ecran;
 		BNOSensor _sensor;
-		void directMove(byte servo, uint8_t pos);
+		void directMove(byte servo, long pos);
 		char *getServoName(byte servo);
 	private:
 		MyServo servos[NOMBRE_SERVO];
