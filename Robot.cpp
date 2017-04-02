@@ -48,6 +48,6 @@ void Robot::directMove(byte servo, uint8_t pos) {
 }
 
 char *Robot::getServoName(byte servo) {
-	servo = constarin(servo, 0, 12);
+	servo = constrain(servo, 0, 12);
 	return servos[servo]._nom;
 }
