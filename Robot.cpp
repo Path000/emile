@@ -37,7 +37,7 @@ void Robot::init() {
 	servos[SERVO_PIED_G] =     servoPG;
 
 	for (byte i = 0; i < 13; i++) {
-		_servoDriver.setPWM(i, 0, servos[i]._rep);
+		directMove(i, servos[i]._rep);
 	}
 }
 
