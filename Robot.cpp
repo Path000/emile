@@ -42,7 +42,7 @@ void Robot::init() {
 }
 
 void Robot::directMove(byte servo, uint8_t pos) {
-	pos = pos = constrain(pos, servos[servo]._min, servos[servo]._max);
+	pos = constrain(pos, servos[servo]._min, servos[servo]._max);
 	_servoDriver.setPWM(servo, 0, pos);
 }
 
