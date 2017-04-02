@@ -60,9 +60,8 @@ void Ecran::showCommand(char *name, uint8_t pos) {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);
-	display.setTextSize(2);
+	display.setTextSize(1);
 	display.println("Cmd:SERVO");
-	display.print("index:");
 	display.println(name);
 	display.print("Position:");
 	display.println(pos);
