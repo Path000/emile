@@ -24,7 +24,7 @@ State *StateCommanded::run() {
 			Serial.print("CONSOLE:");
 			Serial.print(name);
 			Serial.print(",");
-			Serial.println(pos);
+			Serial.println(data.arrayArgs[1]);
 
 
 		_robot->directMove(index, pos);
