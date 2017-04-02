@@ -54,25 +54,7 @@ ParsedCommand RemoteCommand::_parse() {
 		data.arrayArgs[index] = arg;
 		index++;
 	}
-/*
-	ParsedCommand data;
-	data.cmd = "";
-	data.arg = "";
-	if (!_stringComplete) {
-		return data;
-	}
-	int dataLength = _inputString.length();
-	int sepPos = _inputString.indexOf(COMMAND_SEPARATOR);
-	if (sepPos == -1) {
-		data.cmd = _inputString;
-		return data;
-	}
-	if (sepPos + 1 >= dataLength) return data;
-
-	data.cmd = _inputString.substring(0, sepPos);
-	data.arg = _inputString.substring(sepPos, dataLength - 1);
 	return data;
-	*/
 }
 
 // Called from loop()
