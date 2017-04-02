@@ -7,18 +7,22 @@ State *StateCommanded::run() {
 		return (State *)this;
 	}
 
-	_robot->_ecran.showCommand(data);
+
 
 	if (data.cmd == COMMAND_START) {
+		_robot->_ecran.showCommandStart();
 	}
 	if (data.cmd == COMMAND_STOP) {
 		_robot->_ecran.clear();
 		return _stateIdle;
 	}
 	if (data.cmd == COMMAND_SERVO) {
-		int index = data.arrayArgs[0].toInt();
-		int angle = data.arrayArgs[1].toInt();
-		_robot->directMove(index, angle);
+		byte index = data.arrayArgs[0].toInt();
+		uint8_t pos = data.arrayArgs[1].toInt();
+		char *name = _robot->getServoName(index);
+		_robot->_ecran.showCommand(name, pos);
+
+		_robot->directMove(index, pos);
 	}
 	return (State *)this;
 }

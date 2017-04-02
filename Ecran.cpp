@@ -47,16 +47,24 @@ void Ecran::clear() {
 	display.display();
 }
 
-void Ecran::showCommand(ParsedCommand command) {
+void showCommandStart() {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);
 	display.setTextSize(2);
-	display.print("Cmd:");
-	display.println(command.cmd);
+	display.println("Cmd:START");
+	display.display();
+}
+
+void Ecran::showCommand(char *name, uint8_t pos) {
+	display.clearDisplay();
+	display.setTextColor(WHITE);
+	display.setCursor(0, 0);
+	display.setTextSize(2);
+	display.println("Cmd:SERVO");
 	display.print("index:");
-	display.println(command.arrayArgs[0].toInt());
-	display.print("angle:");
-	display.println(command.arrayArgs[1].toInt());
+	display.println(name);
+	display.print("Position:");
+	display.println(pos);
 	display.display();
 }

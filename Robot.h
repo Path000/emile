@@ -31,6 +31,7 @@ class Robot {
 		Ecran _ecran;
 		BNOSensor _sensor;
 		void directMove(byte servo, uint8_t pos);
+		char *getServoName(byte servo);
 	private:
 		MyServo servos[NOMBRE_SERVO];
 		Adafruit_PWMServoDriver _servoDriver;
