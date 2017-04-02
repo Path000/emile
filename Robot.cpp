@@ -9,6 +9,8 @@ void Robot::init() {
 	_servoDriver.begin();
 	_servoDriver.setPWMFreq(53);
 
+// relevé des min max avec le driver 16 servos
+
 	MyServo servoPD  ((char *)"Pied droit",      141, 300, 486); // 0
 	MyServo servoGD  ((char *)"Genou droit",     95, 95, 270); // 1
 	MyServo servoHD  ((char *)"Hanche droite",   296, 296, 464); // 2
