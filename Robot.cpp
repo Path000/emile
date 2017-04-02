@@ -7,7 +7,7 @@ void Robot::init() {
 	_ecran.init();
 	_servoDriver = Adafruit_PWMServoDriver();
 	_servoDriver.begin();
-	_servoDriver.setPWMFreq(50);
+	_servoDriver.setPWMFreq(53);
 
 	MyServo servoPD  ((char *)"Pied droit",      100, 200, (uint8_t)500); // 0
 	MyServo servoGD  ((char *)"Genou droit",     100, 200, (uint8_t)500); // 1
