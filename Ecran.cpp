@@ -47,7 +47,7 @@ void Ecran::clear() {
 	display.display();
 }
 
-void showCommandStart() {
+void Ecran::showCommandStart() {
 	display.clearDisplay();
 	display.setTextColor(WHITE);
 	display.setCursor(0, 0);
