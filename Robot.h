@@ -32,8 +32,9 @@ class Robot {
 		BNOSensor _sensor;
 		void directMove(byte servo, uint16_t pos);
 		char *getServoName(byte servo);
+		void restPosition();
 	private:
-		MyServo servos[NOMBRE_SERVO];
+		MyServo _servos[NOMBRE_SERVO];
 		Adafruit_PWMServoDriver _servoDriver;
 };
 

@@ -43,7 +43,7 @@
 </head>
 <body>
   <div class="section">
-    <button id="buttonStart" class="ui-button ui-corner-all ui-widget">Start</button> <button id="buttonStop" class="ui-button ui-corner-all ui-widget">Stop</button>
+    <button id="buttonStart" class="ui-button ui-corner-all ui-widget">Start</button> <button id="buttonStop" class="ui-button ui-corner-all ui-widget">Stop</button> <button id="buttonRest" class="ui-button ui-corner-all ui-widget">Repos</button>
   </div>
 
   <div class="head">
@@ -108,6 +108,9 @@
   });
   $('#buttonStop').click(function() {
     socket.emit('command', {action: 'stop', data: {}});
+  });
+  $('#buttonRest').click(function() {
+    socket.emit('command', {action: 'rest', data: {}});
   });
 
   $( "#sliderPD" ).slider({

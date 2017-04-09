@@ -54,3 +54,8 @@ webServer.on('stop', function(data) {
   console.log(`stop`);
   arduino.writeSerial(`STOP`);
 });
+
+webServer.on('rest', function(data) {
+  console.log(`rest`);
+  arduino.writeSerial(`REST`);
+});

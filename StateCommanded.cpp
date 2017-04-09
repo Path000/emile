@@ -7,14 +7,14 @@ State *StateCommanded::run() {
 		return (State *)this;
 	}
 
-
-
 	if (data.cmd == COMMAND_START) {
 		_robot->_ecran.showCommandStart();
 	}
+	if (data.cmd == COMMAND_REST) {
+		_robot->_ecran.showCommandStart();
+	}
 	if (data.cmd == COMMAND_STOP) {
-		_robot->_ecran.clear();
-		return _stateIdle;
+		_robot->restPosition();
 	}
 	if (data.cmd == COMMAND_SERVO) {
 		byte index = data.arrayArgs[0].toInt();

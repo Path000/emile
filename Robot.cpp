@@ -25,31 +25,35 @@ void Robot::init() {
 	MyServo servoGG  ((char *)"Genou gauche",    224, 414, 414); // 1
 	MyServo servoPG  ((char *)"Pied gauche",     195, 390, 510); // 0
 
-	servos[SERVO_PIED_D]     = servoPD;
-	servos[SERVO_GENOU_D]    = servoGD;
-	servos[SERVO_HANCHE_D]   = servoHD;
-	servos[SERVO_COUDE_D]    = servoCD;
-	servos[SERVO_EPAULE_X_D] = servoEDX;
-	servos[SERVO_EPAULE_Z_D] = servoEDZ;
-	servos[SERVO_TETE]       = servoT;
-	servos[SERVO_EPAULE_Z_G] = servoEGZ;
-	servos[SERVO_EPAULE_X_G] = servoEGX;
-	servos[SERVO_COUDE_G]    = servoCG;
-	servos[SERVO_HANCHE_G]   = servoHG;
-	servos[SERVO_GENOU_G]    = servoGG;
-	servos[SERVO_PIED_G]     = servoPG;
+	_servos[SERVO_PIED_D]     = servoPD;
+	_servos[SERVO_GENOU_D]    = servoGD;
+	_servos[SERVO_HANCHE_D]   = servoHD;
+	_servos[SERVO_COUDE_D]    = servoCD;
+	_servos[SERVO_EPAULE_X_D] = servoEDX;
+	_servos[SERVO_EPAULE_Z_D] = servoEDZ;
+	_servos[SERVO_TETE]       = servoT;
+	_servos[SERVO_EPAULE_Z_G] = servoEGZ;
+	_servos[SERVO_EPAULE_X_G] = servoEGX;
+	_servos[SERVO_COUDE_G]    = servoCG;
+	_servos[SERVO_HANCHE_G]   = servoHG;
+	_servos[SERVO_GENOU_G]    = servoGG;
+	_servos[SERVO_PIED_G]     = servoPG;
 
+	restPosition();
+}
+
+void Robot::restPosition() {
 	for (byte i = 0; i < 13; i++) {
-		directMove(i, servos[i]._rep);
+		directMove(i, _servos[i]._rep);
 	}
 }
 
 void Robot::directMove(byte servo, uint16_t pos) {
-	pos = constrain(pos, servos[servo]._min, servos[servo]._max);
+	pos = constrain(pos, _servos[servo]._min, _servos[servo]._max);
 	_servoDriver.setPWM(servo, 0, pos);
 }
 
 char *Robot::getServoName(byte servo) {
 	servo = constrain(servo, 0, 12);
-	return servos[servo]._nom;
+	return _servos[servo]._nom;
 }
