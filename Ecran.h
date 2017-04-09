@@ -21,6 +21,7 @@ class Ecran {
 		void eyes();
 		void showCommand(char *name, uint16_t pos);
 		void showCommandStart();
+		void showCommandRest();
 	private:
 };
 

@@ -56,6 +56,15 @@ void Ecran::showCommandStart() {
 	display.display();
 }
 
+void Ecran::showCommandRest() {
+	display.clearDisplay();
+	display.setTextColor(WHITE);
+	display.setCursor(0, 0);
+	display.setTextSize(2);
+	display.println("Cmd:REST");
+	display.display();
+}
+
 void Ecran::showCommand(char *name, uint16_t pos) {
 	display.clearDisplay();
 	display.setTextColor(WHITE);

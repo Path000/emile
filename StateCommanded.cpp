@@ -10,12 +10,17 @@ State *StateCommanded::run() {
 	if (data.cmd == COMMAND_START) {
 		_robot->_ecran.showCommandStart();
 	}
+
 	if (data.cmd == COMMAND_REST) {
-		_robot->_ecran.showCommandStart();
-	}
-	if (data.cmd == COMMAND_STOP) {
 		_robot->restPosition();
+		_robot->_ecran.showCommandRest();
 	}
+
+	if (data.cmd == COMMAND_STOP) {
+		_robot->_ecran.clear();
+		return _stateIdle;
+ 	}
+
 	if (data.cmd == COMMAND_SERVO) {
 		byte index = data.arrayArgs[0].toInt();
 		uint16_t pos = data.arrayArgs[1].toInt();
