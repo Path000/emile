@@ -23,7 +23,7 @@ void Robot::init() {
 	MyServo servoCG  ((char *)"Coude gauche",    279, 279, 430); // 3
 	MyServo servoHG  ((char *)"Hanche gauche",   227, 372, 372); // 2
 	MyServo servoGG  ((char *)"Genou gauche",    224, 414, 414); // 1
-	MyServo servoPG  ((char *)"Pied gauche",     195, 390, 510); // 0
+	MyServo servoPG  ((char *)"Pied gauche",     195, 377, 510); // 0
 
 	_servos[SERVO_PIED_D]     = servoPD;
 	_servos[SERVO_GENOU_D]    = servoGD;
